@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RGPatients.Models.ConcentrationUnit>
+
+@{
+    ViewData["Title"] = "List Of Concentration Units";
+}
+
+<h1>List Of Concentration Units</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ConcentrationCode)
+            </th>
+           <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(model => item.ConcentrationCode)
+            </td>
+             
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConcentrationCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ConcentrationCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConcentrationCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

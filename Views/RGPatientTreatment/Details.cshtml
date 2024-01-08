@@ -1,0 +1,42 @@
+﻿@model RGPatients.Models.PatientTreatment
+
+@{
+    ViewData["Title"] = "Details of a Treatment for " + @ViewBag.DiagnosisName + ", Patient: " + @ViewBag.PatientName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>PatientTreatment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatePrescribed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatePrescribed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PatientDiagnosis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PatientDiagnosis.PatientDiagnosisId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Treatment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Treatment.TreatmentId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PatientTreatmentId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

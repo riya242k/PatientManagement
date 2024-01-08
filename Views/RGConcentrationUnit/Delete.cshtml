@@ -1,0 +1,21 @@
+﻿@model RGPatients.Models.ConcentrationUnit
+
+@{
+    ViewData["Title"] = "Delete Concentration Unit";
+}
+
+<h1>Delete Concentration Unit</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ConcentrationUnit</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+    
+    <form asp-action="Delete">
+        <input asp-for="ConcentrationCode" readonly/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

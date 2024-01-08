@@ -1,0 +1,32 @@
+﻿@model RGPatients.Models.EditRole
+
+@{
+    ViewData["Title"] = "Confirm Delete of Role " + Model.RoleName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <h2>Users In Role</h2>
+    <div>
+        <ul>
+            @foreach (var user in Model.Users)
+            {
+            <li>
+                @user
+
+            </li>
+            }
+        </ul>
+    </div>
+
+   
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Confirm Delete" class="btn btn-danger" /> |
+        <a asp-controller="RGRole" asp-action="DeleteRole" asp-route-id="@Model.Id" >Cancel Delete</a>|
+        <a asp-controller="RGRole" asp-action="Index">Return to Role List</a>
+    </form>
+</div>

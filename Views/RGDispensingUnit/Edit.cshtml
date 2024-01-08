@@ -1,0 +1,30 @@
+﻿@model RGPatients.Models.DispensingUnit
+
+@{
+    ViewData["Title"] = "Edit Dispensing Unit";
+}
+
+<h1>Edit Dispensing Unit</h1>
+
+<h4>DispensingUnit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="DispensingCode" class="control-label">Dispensing Code</label>
+            <input asp-for="DispensingCode" class="form-control" readonly />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

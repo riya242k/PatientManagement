@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Identity;
+
+@model CreateRole
+@{
+    ViewData["Title"] = "Current Roles";
+    //Boolean isAdministrator = User.IsInRole("administrators");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (ViewBag.Roles != null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="CreateRole">
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RoleName"></label>
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                    
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Role</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Role
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in ViewBag.Roles)
+            {
+                <tr>
+                    <td>
+                        @role.Name
+                    </td>
+
+                    <td>
+
+                        @*<a asp-controller="RGRole" asp-action="EditRole" asp-route-id="@role.Id">Edit Role</a> |*@
+
+                        <a asp-controller="RGRole" asp-action="UsersInRole" asp-route-RoleId="@role.Id">Users In Role</a> |
+
+                        @if (role.Name != "administrators")
+                        {
+                            <a asp-controller="RGRole" asp-action="DeleteRole" asp-route-id="@role.Id">Delete Role</a>
+                        }
+                    </td>
+                </tr>
+            }
+    </table>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Roles created
+        </div>
+        <div class="card-body">
+            <a class="btn btn-primary" asp-controller="RGRole" asp-action="CreateRole"> Add Role</a>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+}
+
